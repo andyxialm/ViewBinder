@@ -47,17 +47,27 @@ public abstract class ViewBinder<T> {
         return onCreateView(LayoutInflater.from(context).inflate(parser, root, attachToRoot));
     }
 
+    public void attachView(@NonNull View view) {
+        onCreateView(view);
+    }
+
     public View getView() {
         return mView;
     }
 
     public void setData(T data) {
         mData = data;
-        onDataBinding(mView, data);
+        notifyDataSetChanged();
     }
 
     public T getData() {
         return mData;
+    }
+
+    public void notifyDataSetChanged() {
+        if (mView != null) {
+            onDataBinding(mView, mData);
+        }
     }
 
     protected Context getContext() {

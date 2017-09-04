@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ViewBinder</string>
     <string name="sample_image_view">Sample ImageView</string>
+    <string name="click_me">Click Me</string>
 </resources>
