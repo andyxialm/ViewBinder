@@ -57,7 +57,6 @@ public abstract class ViewBinder<T> {
 
     public void setData(T data) {
         mData = data;
-        notifyDataSetChanged();
     }
 
     public T getData() {

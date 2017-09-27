@@ -17,7 +17,7 @@ allprojects {
 ##### Step 2. Add the dependency
 ~~~ xml
 dependencies {
-    compile 'com.github.andyxialm:ViewBinder:0.2.0'
+    compile 'com.github.andyxialm:ViewBinder:0.2.1'
 }
 ~~~
 

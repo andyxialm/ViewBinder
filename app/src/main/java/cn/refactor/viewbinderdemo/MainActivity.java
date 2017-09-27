@@ -14,17 +14,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        LinearLayout container = (LinearLayout) findViewById(R.id.container);
+        LinearLayout container = findViewById(R.id.container);
         CustomViewBinder roundViewBinder = new CustomViewBinder();
         container.addView(roundViewBinder.inflate(this, R.layout.layout_custom, null));
         roundViewBinder.setData(new Entity(R.mipmap.ic_launcher_round, R.string.app_name));
+        roundViewBinder.notifyDataSetChanged();
 
         CustomViewBinder rectViewBinder = new CustomViewBinder();
         container.addView(rectViewBinder.inflate(this, R.layout.layout_custom, null));
         rectViewBinder.setData(new Entity(R.mipmap.ic_launcher, R.string.sample_image_view));
+        rectViewBinder.notifyDataSetChanged();
 
         CustomSetViewBinder customSetViewBinder = new CustomSetViewBinder();
         customSetViewBinder.attachView(findViewById(R.id.custom_ll));
         customSetViewBinder.setData(new DataEntity());
+        customSetViewBinder.notifyDataSetChanged();
     }
 }
