@@ -13,7 +13,9 @@
 package cn.refactor.viewbinder;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +32,7 @@ public abstract class ViewBinder<T> {
     private T mData;
     private View mView;
     private Context mContext;
+    private Bundle mArguments;
 
     public View inflate(Context context, int resource, ViewGroup root) {
         return onCreateView(LayoutInflater.from(context).inflate(resource, root));
@@ -80,6 +83,15 @@ public abstract class ViewBinder<T> {
         return view;
     }
 
+    public void setArguments(@Nullable Bundle args) {
+        mArguments = args;
+    }
+
+    @Nullable public final Bundle getArguments() {
+        return mArguments;
+    }
+
     protected abstract void onViewCreated(@NonNull View view);
+
     protected abstract void onDataBinding(@NonNull View view, T data);
 }

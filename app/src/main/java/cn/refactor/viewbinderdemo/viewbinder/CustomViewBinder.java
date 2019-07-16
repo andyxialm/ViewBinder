@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import cn.refactor.viewbinder.ViewBinder;
+import cn.refactor.viewbinderdemo.ArgumentKeys;
 import cn.refactor.viewbinderdemo.Entity;
 import cn.refactor.viewbinderdemo.R;
 
@@ -28,8 +29,13 @@ public class CustomViewBinder extends ViewBinder<Entity> {
 
     @Override
     protected void onDataBinding(@NonNull View view, Entity data) {
-        textView.setText(data.getText());
         imageView.setImageResource(data.getIcon());
+
+        if (getArguments() != null) {
+            textView.setText(getArguments().getString(ArgumentKeys.KEY_CUSTOM));
+        } else {
+            textView.setText(data.getText());
+        }
     }
 
 }

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.LinearLayout;
 
+import cn.refactor.viewbinder.ViewBinder;
 import cn.refactor.viewbinderdemo.viewbinder.CustomSetViewBinder;
 import cn.refactor.viewbinderdemo.viewbinder.CustomViewBinder;
 
@@ -14,8 +15,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Bundle args = new Bundle();
+        args.putString(ArgumentKeys.KEY_CUSTOM, ViewBinder.class.getSimpleName());
+
         LinearLayout container = findViewById(R.id.container);
         CustomViewBinder roundViewBinder = new CustomViewBinder();
+        roundViewBinder.setArguments(args);
         container.addView(roundViewBinder.inflate(this, R.layout.layout_custom, null));
         roundViewBinder.setData(new Entity(R.mipmap.ic_launcher_round, R.string.app_name));
         roundViewBinder.notifyDataSetChanged();
